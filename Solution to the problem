@@ -1,0 +1,151 @@
+package pravallika;
+
+ 
+import java.util.*;
+
+ 
+class Student implements Comparable < Student > 
+{
+  
+int token;
+  
+String studentName;
+  
+double cgpa;
+  
+public Student (int id, String fname, double cgpa)
+  {
+    
+super ();
+    
+this.token = id;
+    
+this.studentName = fname;
+    
+this.cgpa = cgpa;
+  
+} 
+public int getToken ()
+  {
+    
+return token;
+  
+}
+  
+public String getFname ()
+  {
+    
+return studentName;
+  
+}
+  
+public double getCgpa ()
+  {
+    
+return cgpa;
+  
+}
+  
+public int compareTo (Student s) 
+  {
+    
+if (Double.compare (this.cgpa, s.cgpa) != 0)
+      
+      {
+	
+return -Double.compare (this.cgpa, s.cgpa);
+      
+}
+    
+    else if (this.studentName.compareTo (s.studentName) != 0)
+      
+      {
+	
+if (this.studentName.compareTo (s.studentName) > 0)
+	  
+return 1;
+	
+	else
+	  
+return -1;
+      
+}
+    
+    else
+      
+return Integer.compare (this.token, s.token);
+  
+}
+
+}
+
+
+ 
+public class UpGradAssignment
+{
+  
+ 
+public static void main (String[]args)
+  {
+    
+Scanner input = new Scanner (System.in);
+    
+int totalEvents = Integer.parseInt (input.nextLine ());
+    
+PriorityQueue < Student > studentPriority =
+      new PriorityQueue < Student > ();
+    
+while (totalEvents > 0)
+      {
+	
+String e = input.next ();
+	
+if (e.compareTo ("SERVED") == 0)
+	  
+	  {
+	    
+Student s = studentPriority.poll ();
+	  
+}
+	
+	else
+	  
+	  {
+	    
+String n = input.next ();
+	    
+double d = input.nextDouble ();
+	    
+int t = input.nextInt ();
+	    
+Student s = new Student (t, n, d);
+	    
+studentPriority.add (s);
+	  
+} 
+totalEvents--;
+    
+} 
+if (studentPriority.isEmpty ())
+      
+System.out.println ("EMPTY");
+    
+    else
+      
+      {
+	
+while (!studentPriority.isEmpty ())
+	  
+	  {
+	    
+Student s = studentPriority.poll ();
+	    
+System.out.println (s.studentName);
+	  
+}
+      
+}
+  
+}
+
+}
